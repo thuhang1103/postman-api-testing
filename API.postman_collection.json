@@ -1,0 +1,4399 @@
+{
+	"info": {
+		"_postman_id": "aecb8cdc-225e-4fc9-ac34-3bb3e51b7118",
+		"name": "NailXinh_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30162868"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "public",
+					"item": [
+						{
+							"name": "auth/login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"if (response.token) {",
+											"    pm.collectionVariables.set(\"token\", response.token);",
+											"    console.log(\"Access token saved to collection variable:\", response.token);",
+											"} else {",
+											"    console.log(\"⚠️ No accessToken found in response\");",
+											"}",
+											"",
+											"if (response.refreshToken) {",
+											"    pm.collectionVariables.set(\"refresToken\", response.refreshToken);",
+											"    console.log(\" Refresh token saved to collection variable:\", response.refreshToken);",
+											"}",
+											"",
+											"pm.test(\"Đăng nhập thành công\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"UserName\": \"Nguyen Van A\",\n  \"Password\": \"pass123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"UserName\": \"thuhang\",\n  \"Password\": \"pass1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/login",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "342"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"156-ZhhWTTxUmhvrDXlitR9VWPfsFBM\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Oct 2025 11:20:52 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjM5LCJSb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3NjEwNDU2NTIsImV4cCI6MTc2MTA0NjU1Mn0.5J6oJWfJ6h_MsRt6DPmlqdt1PWAPNiF13vHFXoC5JGs\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjM5LCJpYXQiOjE3NjEwNDU2NTIsImV4cCI6MTc2MTY1MDQ1Mn0.mtrkV6fonZiaCk6oqFee73728VmzTTNzzM7xuKz5Wjc\"\n}"
+								}
+							]
+						},
+						{
+							"name": "auth/senOtp",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/sendOtp",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"sendOtp"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "32"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20-nT/XgTbXPtoOTMEGjN3iJ8bFrao\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Oct 2025 11:34:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ok\": true,\n    \"message\": \"OTP sent\"\n}"
+								}
+							]
+						},
+						{
+							"name": "reset_password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"nguen4857@gmail.com\",\n  \"password\": \"pass1234\",\n  \"resetpassToken\": \"{{registrationToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/resetPassword",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"resetPassword"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"nguen4857@gmail.com\",\n  \"password\": \"pass1234\",\n  \"resetpassToken\": \"{{registrationToken}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/resetPassword",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"resetPassword"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "61"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3d-0xccIuaNskyJpHrp4sWXelsF1Fc\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 12:28:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ok\": true,\n    \"message\": \"password reseted\",\n    \"userName\": \"thuhang\"\n}"
+								}
+							]
+						},
+						{
+							"name": "verify_otp",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"try {",
+											"  let data = pm.response.json();",
+											"",
+											"  if (data && data.registrationToken) {",
+											"    pm.collectionVariables.set(\"registrationToken\", data.registrationToken);",
+											"    console.log(\" registrationToken saved to Collection variable:\", data.registrationToken);",
+											"  } else {",
+											"    console.log(\"⚠️ registrationToken not found in response:\", data);",
+											"  }",
+											"} catch (err) {",
+											"  console.error(\"❌ Could not parse JSON:\", err);",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\",\n  \"otp\": \"316854\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/verifyOtp",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"verifyOtp"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"nguen4857@gmail.com\",\n  \"otp\": \"578918\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/verifyOtp",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"verifyOtp"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "202"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ca-acHwC50x8OKVi3qn0WaYSETe3Sc\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 12:22:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ok\": true,\n    \"registrationToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ndWVuNDg1N0BnbWFpbC5jb20iLCJpYXQiOjE3NjE2NTQxMzIsImV4cCI6MTc2MTY1NDczMn0.CQzW0OUHCvpV18HKqfu8B0BQBi1Ou7BnTSblyWOJXyU\"\n}"
+								}
+							]
+						},
+						{
+							"name": "register_user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\",\n  \"password\": \"pass1234\",\n  \"username\": \"nguyenhang\",\n  \"registrationToken\": \"{{registrationToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/registerCustomer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"registerCustomer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\",\n  \"password\": \"pass1234\",\n  \"username\": \"nguyenhang\",\n  \"registrationToken\": \"{{registrationToken}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/registerCustomer",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"registerCustomer"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "55"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"37-4bk7Cb/1HEHCnYUwKeULbdM1vlc\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 13:15:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ok\": true,\n    \"message\": \"Customer registered\",\n    \"userId\": 40\n}"
+								}
+							]
+						},
+						{
+							"name": "refreshToken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"if (response.token) {",
+											"    pm.collectionVariables.set(\"token\", response.token);",
+											"    console.log(\"Access token saved to collection variable:\", response.token);",
+											"} else {",
+											"    console.log(\"⚠️ No accessToken found in response\");",
+											"}",
+											"",
+											"if (response.refreshToken) {",
+											"    pm.collectionVariables.set(\"refreshToken\", response.refreshToken);",
+											"    console.log(\" Refresh token saved to collection variable:\", response.refreshToken);",
+											"}",
+											"",
+											"pm.test(\"Đăng nhập thành công\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/refreshToken",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"refreshToken"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/refreshToken",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"refreshToken"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "336"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"150-0P3xJBim4OJOFBmVDMyoTwHdqiE\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 15:22:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsIlJvbGUiOiJBZG1pbiIsImlhdCI6MTc2MTY2NDk2MCwiZXhwIjoxNzYxNjY1ODYwfQ.9wNg2H0UmWYxnuia1lxkgrpNaBDrPvTT4rTPS7H8Q6U\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsImlhdCI6MTc2MTY2NDk2MCwiZXhwIjoxNzYyMjY5NzYwfQ.9U4LSRczq65dp2il6KtvoVS7DA2qjoQzHG68lYVlnAk\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "protected",
+					"item": [
+						{
+							"name": "register_staff",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"example1233@gmail.com\",\n  \"password\": \"pass1234\",\n  \"username\": \"nguyenhang\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/registerStaff",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"registerStaff"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"example1233@gmail.com\",\n  \"password\": \"pass1234\",\n  \"username\": \"nguyenhang\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/registerStaff",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"registerStaff"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "52"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"34-OlFQkBxrjgad5stHoptveZd0Spo\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 15:07:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ok\": true,\n    \"message\": \"Staff registered\",\n    \"userId\": 42\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/role",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"role"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/role",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"role"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "16"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"10-B3gPjewCYnhGpja9cb9cOor9W2Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 15:29:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"role\": \"Admin\"\n}"
+								}
+							]
+						},
+						{
+							"name": "logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"token\", \"\");",
+											"pm.collectionVariables.set(\"refreshToken\", \"\");",
+											"pm.test(\"Đăng xuất thành công\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "39"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"27-0i0XDAVBFPHNbBUI7HOv0F24L4E\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 28 Oct 2025 16:22:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Logged out\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getAllUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"UserName\": \"Nguyen Van A\",\n  \"Password\": \"pass123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"UserName\": \"Nguyen Van A\",\n  \"Password\": \"pass123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/users/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2703"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a8f-dioCC6gHAV9+fBKynLi4zWWt5lg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Oct 2025 16:41:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"UserID\": 1,\n        \"UserName\": \"Nguyen Van A\",\n        \"Email\": \"a@example.com\",\n        \"Password\": \"$2b$10$Rn5ZVJNIKllSstrAlsl2l.ZWc3kDIRtuZsrD1iPB6nqOovwp/4MF2\",\n        \"Role\": \"Admin\",\n        \"Phone\": \"0123456789\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-25T14:23:17.000Z\"\n    },\n    {\n        \"UserID\": 2,\n        \"UserName\": \"Tran Thi B\",\n        \"Email\": \"b@example.com\",\n        \"Password\": \"pass123\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"0987654321\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:06:46.000Z\"\n    },\n    {\n        \"UserID\": 3,\n        \"UserName\": \"Le Van C\",\n        \"Email\": \"c@example.com\",\n        \"Password\": \"pass123\",\n        \"Role\": \"Customer\",\n        \"Phone\": \"0112233445\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:06:46.000Z\"\n    },\n    {\n        \"UserID\": 4,\n        \"UserName\": \"Pham Thi D\",\n        \"Email\": \"d@example.com\",\n        \"Password\": \"pass123\",\n        \"Role\": \"Customer\",\n        \"Phone\": \"0223344556\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:06:46.000Z\"\n    },\n    {\n        \"UserID\": 5,\n        \"UserName\": \"Hoang Van E\",\n        \"Email\": \"e@example.com\",\n        \"Password\": \"pass123\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"0334455667\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:06:46.000Z\"\n    },\n    {\n        \"UserID\": 6,\n        \"UserName\": \"Dang Thi F\",\n        \"Email\": \"f@example.com\",\n        \"Password\": \"pass123\",\n        \"Role\": \"Customer\",\n        \"Phone\": \"0445566778\",\n        \"CreatedAt\": \"2025-09-11T11:06:46.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:06:46.000Z\"\n    },\n    {\n        \"UserID\": 7,\n        \"UserName\": \"sgjkk\",\n        \"Email\": \"dgujj\",\n        \"Password\": \"sfghh\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"1234567778\",\n        \"CreatedAt\": \"2025-09-13T13:53:27.000Z\",\n        \"UpdatedAt\": \"2025-09-13T13:53:27.000Z\"\n    },\n    {\n        \"UserID\": 9,\n        \"UserName\": \"sgjkk\",\n        \"Email\": \"fhjjk\",\n        \"Password\": \"sfghh\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"1234567778\",\n        \"CreatedAt\": \"2025-09-13T13:53:52.000Z\",\n        \"UpdatedAt\": \"2025-09-13T13:53:52.000Z\"\n    },\n    {\n        \"UserID\": 11,\n        \"UserName\": \"guuu\",\n        \"Email\": \"ghjj\",\n        \"Password\": \"ghj\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"wetuu\",\n        \"CreatedAt\": \"2025-09-13T13:55:18.000Z\",\n        \"UpdatedAt\": \"2025-09-13T13:55:18.000Z\"\n    },\n    {\n        \"UserID\": 12,\n        \"UserName\": \"fgh\",\n        \"Email\": \"chhj\",\n        \"Password\": \"fghh\",\n        \"Role\": \"Staff\",\n        \"Phone\": \"xghjk\",\n        \"CreatedAt\": \"2025-09-13T13:55:58.000Z\",\n        \"UpdatedAt\": \"2025-09-13T13:55:58.000Z\"\n    },\n    {\n        \"UserID\": 39,\n        \"UserName\": \"thuhang\",\n        \"Email\": \"nguen4857@gmail.com\",\n        \"Password\": \"$2b$10$NoKz6bW6S9Fm5GtUczJQV.sKw8bW5nu88FSmlHGKWfcICOZDJ3JQy\",\n        \"Role\": \"Customer\",\n        \"Phone\": null,\n        \"CreatedAt\": \"2025-09-25T14:25:53.000Z\",\n        \"UpdatedAt\": \"2025-10-28T12:28:15.000Z\"\n    },\n    {\n        \"UserID\": 40,\n        \"UserName\": \"nguyenhang\",\n        \"Email\": \"thuhang1103ntth@gmail.com\",\n        \"Password\": \"$2b$10$fRm5FhR0eGHxiD706/Fi6e2erh1maBwNhjYjjbaHvpnul8uiCMW4S\",\n        \"Role\": \"Customer\",\n        \"Phone\": null,\n        \"CreatedAt\": \"2025-10-28T13:15:36.000Z\",\n        \"UpdatedAt\": \"2025-10-28T13:15:36.000Z\"\n    },\n    {\n        \"UserID\": 42,\n        \"UserName\": \"nguyenhang\",\n        \"Email\": \"example1233@gmail.com\",\n        \"Password\": \"$2b$10$6MOqMnK2x9BvBaRvDmRhcOedzRdzVVldDn541zzGU6r.YQ51Jvzk.\",\n        \"Role\": \"Staff\",\n        \"Phone\": null,\n        \"CreatedAt\": \"2025-10-28T15:07:43.000Z\",\n        \"UpdatedAt\": \"2025-10-28T15:07:43.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "update_user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Phone\": \"0988777666\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Phone\": \"0988777666\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"3"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-A5hEYHqe1dAXGLvIiVkNnqT/HkI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Oct 2025 17:06:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ok\": true,\n    \"message\": \"Cập nhật người dùng thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete_user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/users/12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/users/12",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-iVRVMYViuNSm+Umzryfuj4mGLr4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Oct 2025 17:11:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ok\": true,\n    \"message\": \"Xóa người dùng thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "check_userName",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"thuhang\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/checkUsername",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"checkUsername"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"thuhang\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/checkUsername",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"checkUsername"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f-lWSD52foMX4qLT82tweJE091S9Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 07:52:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"exists\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "checkEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/checkEmail",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"checkEmail"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"thuhang1103ntth@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/checkEmail",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"checkEmail"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f-lWSD52foMX4qLT82tweJE091S9Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 07:52:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"exists\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "option_values",
+					"item": [
+						{
+							"name": "get_value_by_optionId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"optionId\": 4,\n  \"newName\": \"kích thước \"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-values/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-values",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"optionId\": 4,\n  \"newName\": \"kích thước \"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/products/variant-values/2",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"products",
+												"variant-values",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "195"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"c3-NIAPW7rEGPvvr5qF7ZURrJkYNX8\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 31 Oct 2025 16:51:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"ValueID\": 5,\n        \"OptionID\": 2,\n        \"ValueName\": \"Nhỏ\"\n    },\n    {\n        \"ValueID\": 6,\n        \"OptionID\": 2,\n        \"ValueName\": \"Vừa\"\n    },\n    {\n        \"ValueID\": 7,\n        \"OptionID\": 2,\n        \"ValueName\": \"Lớn\"\n    },\n    {\n        \"ValueID\": 8,\n        \"OptionID\": 2,\n        \"ValueName\": \"Siêu lớn\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "add_value",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"optionId\": 1,\n  \"valueName\": \"màu tím\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-values",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-values"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"optionId\": 1,\n  \"valueName\": \"màu tím\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/products/variant-values",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"products",
+												"variant-values"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "70"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"46-wzzRymwe0fPV0qTCbYSp/CgnvrA\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 31 Oct 2025 16:53:08 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Thêm giá trị biến thể thành công\",\n    \"insertId\": 17\n}"
+								}
+							]
+						},
+						{
+							"name": "update_value",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"valueId\": 17,\n  \"newName\": \"màu chàm\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-values",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-values"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"valueId\": 17,\n  \"newName\": \"màu chàm\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/products/variant-values",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"products",
+												"variant-values"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "68"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"44-nTxvZXp+yIR/3WmFz7HaB5VTL2s\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 31 Oct 2025 17:05:01 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Cập nhật tên giá trị biến thể thành công\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete_value",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-values/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-values",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "example",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_url}}/products/variant-values/4",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"products",
+												"variant-values",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "55"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"37-c/A0YW6Gp40Qizk/kr5Av98td7I\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 31 Oct 2025 17:04:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Xóa giá trị biến thể thành công\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "search_name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/searchName?name=Flower Nail Kit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"searchName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Flower Nail Kit"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/searchName?name=Flower Nail Kit",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"searchName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Flower Nail Kit"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "362"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16a-tgxXbDXaKUwqndRAbHtWe2W2lAw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:09:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 15,\n        \"ProductName\": \"Flower Nail Kit\",\n        \"Description\": \"Bộ dụng cụ nail cơ bản\",\n        \"Price\": \"150.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getAll_product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20077"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e6d-PKyEs865VtlG/Vl4EOpinJbmm2k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:10:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 5,\n        \"ProductName\": \"Sơn móng tay màu xanh\",\n        \"Description\": \"Màu xanh dương mát mắt\",\n        \"Price\": \"170000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 200,\n        \"SoldQuantity\": 80,\n        \"ImagePath\": \"images/blue_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 8,\n        \"ProductName\": \"Sơn móng tay màu anh\",\n        \"Description\": \"Màu xanh dương mát mắt\",\n        \"Price\": \"170000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 200,\n        \"SoldQuantity\": 80,\n        \"ImagePath\": \"images/blue_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 6,\n        \"ProductName\": \"Sơn móng tay màu hồng\",\n        \"Description\": \"Màu hồng nhẹ nhàng, dễ thương\",\n        \"Price\": \"160000.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 150,\n        \"SoldQuantity\": 70,\n        \"ImagePath\": \"images/pink_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 9,\n        \"ProductName\": \"Sơn móng tay màhồng\",\n        \"Description\": \"Màu hồng nhẹ nhàng, dễ thương\",\n        \"Price\": \"160000.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 150,\n        \"SoldQuantity\": 70,\n        \"ImagePath\": \"images/pink_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 7,\n        \"ProductName\": \"Sơn móng tay màu đ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 4,\n        \"ProductName\": \"Sơn móng tay màu đỏ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 22,\n        \"ProductName\": \"Nail Glue\",\n        \"Description\": \"Keo dán móng giả\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 27,\n        \"ProductName\": \"Nail Art Stickers\",\n        \"Description\": \"Sticker trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 54,\n        \"ProductName\": \"Nail Art Accessories\",\n        \"Description\": \"Phụ kiện nail\",\n        \"Price\": \"20.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 95,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 47,\n        \"ProductName\": \"Nail Art Tape\",\n        \"Description\": \"Băng trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 52,\n        \"ProductName\": \"Cuticle Remover\",\n        \"Description\": \"Dung dịch tẩy da chết quanh móng\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 28,\n        \"ProductName\": \"Nail Rhinestones\",\n        \"Description\": \"Đá trang trí móng\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 46,\n        \"ProductName\": \"Nail Art Rhinestone Set\",\n        \"Description\": \"Bộ đá trang trí nail\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 75,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 39,\n        \"ProductName\": \"Nail Art Rhinestones\",\n        \"Description\": \"Đá trang trí nail art\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 65,\n        \"SoldQuantity\": 32,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 53,\n        \"ProductName\": \"Nail Art Gems\",\n        \"Description\": \"Đá trang trí móng\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 36,\n        \"ProductName\": \"Nail Art Pen\",\n        \"Description\": \"Bút vẽ nail chuyên nghiệp\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 14,\n        \"ProductName\": \"Son môi lì\",\n        \"Description\": \"Son môi lâu trôi, màu sắc rực rỡ\",\n        \"Price\": \"200000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 25,\n        \"ProductName\": \"Gel Polish Red\",\n        \"Description\": \"Sơn gel màu đỏ tươi\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 48,\n        \"ProductName\": \"Nail Art Foil\",\n        \"Description\": \"Giấy trang trí móng\",\n        \"Price\": \"20.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 85,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 51,\n        \"ProductName\": \"Nail Art Glitter\",\n        \"Description\": \"Bột nhũ trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 26,\n        \"ProductName\": \"Gel Polish Pink\",\n        \"Description\": \"Sơn gel màu hồng\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 38,\n        \"ProductName\": \"Nail File Buffer\",\n        \"Description\": \"Dũa móng & buffer\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 35,\n        \"ProductName\": \"Top Coat\",\n        \"Description\": \"Lớp phủ bảo vệ gel\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 23,\n        \"ProductName\": \"Nail Tips Set\",\n        \"Description\": \"Bộ móng giả nhiều size\",\n        \"Price\": \"90.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 35,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 13,\n        \"ProductName\": \"Nước hoa hồng làm sạch\",\n        \"Description\": \"Làm sạch sâu và se khít lỗ chân lông\",\n        \"Price\": \"180000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 58,\n        \"ProductName\": \"Nail Art Stencils\",\n        \"Description\": \"Khuôn vẽ nail\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 49,\n        \"ProductName\": \"Manicure Cream\",\n        \"Description\": \"Kem chăm sóc móng\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 40,\n        \"ProductName\": \"Nail Art Brushes\",\n        \"Description\": \"Bộ cọ vẽ nail\",\n        \"Price\": \"80.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 24,\n        \"ProductName\": \"Cuticle Oil\",\n        \"Description\": \"Dầu dưỡng móng và da quanh móng\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 34,\n        \"ProductName\": \"Nail Base Coat\",\n        \"Description\": \"Lớp sơn nền gel\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 33,\n        \"ProductName\": \"Nail Primer\",\n        \"Description\": \"Dung dịch lót móng trước gel\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 50,\n        \"ProductName\": \"Pedicure Cream\",\n        \"Description\": \"Kem chăm sóc chân\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 19,\n        \"ProductName\": \"Nail File Set\",\n        \"Description\": \"Bộ dũa móng chuyên nghiệp\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 55,\n        \"ProductName\": \"Nail Art Pens\",\n        \"Description\": \"Bút vẽ nail nhiều màu\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 59,\n        \"ProductName\": \"Nail Art Stamp Kit\",\n        \"Description\": \"Bộ stamping nail nghệ thuật\",\n        \"Price\": \"55.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 10,\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"Description\": \"Sơn móng tay bền màu, dễ sử dụng\",\n        \"Price\": \"120000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 43,\n        \"ProductName\": \"Gel Remover\",\n        \"Description\": \"Gel tẩy móng\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 32,\n        \"ProductName\": \"Nail Remover Gel\",\n        \"Description\": \"Gel tẩy sơn móng gel\",\n        \"Price\": \"55.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 37,\n        \"ProductName\": \"Nail Stamping Kit\",\n        \"Description\": \"Bộ stamping nail\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 21,\n        \"ProductName\": \"UV Lamp\",\n        \"Description\": \"Đèn UV sấy gel nail\",\n        \"Price\": \"300.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 20,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 56,\n        \"ProductName\": \"Nail Art Brushes Pro\",\n        \"Description\": \"Bộ cọ chuyên nghiệp\",\n        \"Price\": \"90.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 60,\n        \"ProductName\": \"Nail Art 3D Kit\",\n        \"Description\": \"Bộ trang trí móng 3D\",\n        \"Price\": \"75.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 45,\n        \"ProductName\": \"Acrylic Liquid\",\n        \"Description\": \"Dầu acrylic nail\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 29,\n        \"ProductName\": \"Manicure Set\",\n        \"Description\": \"Bộ dụng cụ chăm sóc móng\",\n        \"Price\": \"110.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 16,\n        \"ProductName\": \"Nail Polish Set\",\n        \"Description\": \"Bộ sơn móng đa màu\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 57,\n        \"ProductName\": \"Nail Art Design Kit\",\n        \"Description\": \"Bộ thiết kế nail\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 11,\n        \"ProductName\": \"Kem dưỡng da ban đêm\",\n        \"Description\": \"Dưỡng ẩm sâu, làm mờ nếp nhăn\",\n        \"Price\": \"350000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 44,\n        \"ProductName\": \"Nail Sculpting Gel\",\n        \"Description\": \"Gel tạo hình móng\",\n        \"Price\": \"200.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 35,\n        \"SoldQuantity\": 12,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 20,\n        \"ProductName\": \"Nail Brush Set\",\n        \"Description\": \"Bộ cọ vẽ nail đa dạng\",\n        \"Price\": \"80.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 12,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 41,\n        \"ProductName\": \"UV Gel Lamp\",\n        \"Description\": \"Đèn UV cho gel\",\n        \"Price\": \"300.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 20,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 30,\n        \"ProductName\": \"Pedicure Set\",\n        \"Description\": \"Bộ dụng cụ chăm sóc chân\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 30,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 15,\n        \"ProductName\": \"Flower Nail Kit\",\n        \"Description\": \"Bộ dụng cụ nail cơ bản\",\n        \"Price\": \"150.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 12,\n        \"ProductName\": \"Bộ cọ trang điểm\",\n        \"Description\": \"Bộ cọ đa năng, lông mềm mịn\",\n        \"Price\": \"250000.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 75,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 42,\n        \"ProductName\": \"LED Lamp\",\n        \"Description\": \"Đèn LED nail\",\n        \"Price\": \"350.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 18,\n        \"SoldQuantity\": 8,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 18,\n        \"ProductName\": \"Acrylic Nail Kit\",\n        \"Description\": \"Bộ acrylic nail đầy đủ\",\n        \"Price\": \"250.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 25,\n        \"SoldQuantity\": 8,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 31,\n        \"ProductName\": \"Nail Drill Machine\",\n        \"Description\": \"Máy khoan móng chuyên nghiệp\",\n        \"Price\": \"500.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 15,\n        \"SoldQuantity\": 5,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 17,\n        \"ProductName\": \"Gel Nail Starter\",\n        \"Description\": \"Bộ gel nail cho người mới\",\n        \"Price\": \"200.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 30,\n        \"SoldQuantity\": 5,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get_by_category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/category/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/category/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"category",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4269"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10ad-pXKR08Yuvxfl6s8SZCIspQfn8R0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:10:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 4,\n        \"ProductName\": \"Sơn móng tay màu đỏ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 7,\n        \"ProductName\": \"Sơn móng tay màu đ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 52,\n        \"ProductName\": \"Cuticle Remover\",\n        \"Description\": \"Dung dịch tẩy da chết quanh móng\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 14,\n        \"ProductName\": \"Son môi lì\",\n        \"Description\": \"Son môi lâu trôi, màu sắc rực rỡ\",\n        \"Price\": \"200000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 38,\n        \"ProductName\": \"Nail File Buffer\",\n        \"Description\": \"Dũa móng & buffer\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 23,\n        \"ProductName\": \"Nail Tips Set\",\n        \"Description\": \"Bộ móng giả nhiều size\",\n        \"Price\": \"90.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 35,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 24,\n        \"ProductName\": \"Cuticle Oil\",\n        \"Description\": \"Dầu dưỡng móng và da quanh móng\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 10,\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"Description\": \"Sơn móng tay bền màu, dễ sử dụng\",\n        \"Price\": \"120000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:41:17.000Z\",\n        \"Status_Product\": 0\n    },\n    {\n        \"ProductID\": 32,\n        \"ProductName\": \"Nail Remover Gel\",\n        \"Description\": \"Gel tẩy sơn móng gel\",\n        \"Price\": \"55.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 16,\n        \"ProductName\": \"Nail Polish Set\",\n        \"Description\": \"Bộ sơn móng đa màu\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 15,\n        \"ProductName\": \"Flower Nail Kit\",\n        \"Description\": \"Bộ dụng cụ nail cơ bản\",\n        \"Price\": \"150.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 31,\n        \"ProductName\": \"Nail Drill Machine\",\n        \"Description\": \"Máy khoan móng chuyên nghiệp\",\n        \"Price\": \"500.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 15,\n        \"SoldQuantity\": 5,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/id/70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"70"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/id/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"id",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "317"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13d-0K+aOxzhdISc9QoyTp/AoK1+1bQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:10:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 4,\n        \"ProductName\": \"Sơn móng tay màu đỏ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    }\n]"
+						},
+						{
+							"name": "example2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/id/70",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"id",
+										"70"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "653"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28d-6lwOJqz2dRD/W92ke9Bn6NF9oAo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 13:19:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 70,\n        \"ProductName\": \"Sơn Gel Ombre Set 5 Màu\",\n        \"Description\": \"Bộ sơn gel 5 màu chuyển sắc thời thượng.\",\n        \"BasePrice\": 180000,\n        \"CategoryID\": 1,\n        \"StockQuantity\": 75,\n        \"SoldQuantity\": 35,\n        \"CreatedAt\": \"2025-10-31T08:46:03.000Z\",\n        \"UpdatedAt\": \"2025-10-31T08:46:03.000Z\",\n        \"Status_Product\": 1,\n        \"Images\": [\n            \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n            \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n            \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n            \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get_by_status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/status/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"status",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/status/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"status",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46f0-6SCifI5n3SQdCmrvAylwMLX8eDk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:19:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ProductID\": 5,\n        \"ProductName\": \"Sơn móng tay màu xanh\",\n        \"Description\": \"Màu xanh dương mát mắt\",\n        \"Price\": \"170000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 200,\n        \"SoldQuantity\": 80,\n        \"ImagePath\": \"images/blue_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 8,\n        \"ProductName\": \"Sơn móng tay màu anh\",\n        \"Description\": \"Màu xanh dương mát mắt\",\n        \"Price\": \"170000.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 200,\n        \"SoldQuantity\": 80,\n        \"ImagePath\": \"images/blue_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 6,\n        \"ProductName\": \"Sơn móng tay màu hồng\",\n        \"Description\": \"Màu hồng nhẹ nhàng, dễ thương\",\n        \"Price\": \"160000.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 150,\n        \"SoldQuantity\": 70,\n        \"ImagePath\": \"images/pink_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 9,\n        \"ProductName\": \"Sơn móng tay màhồng\",\n        \"Description\": \"Màu hồng nhẹ nhàng, dễ thương\",\n        \"Price\": \"160000.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 150,\n        \"SoldQuantity\": 70,\n        \"ImagePath\": \"images/pink_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 4,\n        \"ProductName\": \"Sơn móng tay màu đỏ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:12:45.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 7,\n        \"ProductName\": \"Sơn móng tay màu đ\",\n        \"Description\": \"Màu đỏ tươi sáng, bền màu\",\n        \"Price\": \"150000.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"images/red_polish.jpg\",\n        \"CreatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"UpdatedAt\": \"2025-09-11T11:14:26.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 22,\n        \"ProductName\": \"Nail Glue\",\n        \"Description\": \"Keo dán móng giả\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 100,\n        \"SoldQuantity\": 50,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 54,\n        \"ProductName\": \"Nail Art Accessories\",\n        \"Description\": \"Phụ kiện nail\",\n        \"Price\": \"20.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 95,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 47,\n        \"ProductName\": \"Nail Art Tape\",\n        \"Description\": \"Băng trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 27,\n        \"ProductName\": \"Nail Art Stickers\",\n        \"Description\": \"Sticker trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 40,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 52,\n        \"ProductName\": \"Cuticle Remover\",\n        \"Description\": \"Dung dịch tẩy da chết quanh móng\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 90,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 46,\n        \"ProductName\": \"Nail Art Rhinestone Set\",\n        \"Description\": \"Bộ đá trang trí nail\",\n        \"Price\": \"30.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 75,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 28,\n        \"ProductName\": \"Nail Rhinestones\",\n        \"Description\": \"Đá trang trí móng\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 35,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 39,\n        \"ProductName\": \"Nail Art Rhinestones\",\n        \"Description\": \"Đá trang trí nail art\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 65,\n        \"SoldQuantity\": 32,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 53,\n        \"ProductName\": \"Nail Art Gems\",\n        \"Description\": \"Đá trang trí móng\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 48,\n        \"ProductName\": \"Nail Art Foil\",\n        \"Description\": \"Giấy trang trí móng\",\n        \"Price\": \"20.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 85,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 25,\n        \"ProductName\": \"Gel Polish Red\",\n        \"Description\": \"Sơn gel màu đỏ tươi\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 36,\n        \"ProductName\": \"Nail Art Pen\",\n        \"Description\": \"Bút vẽ nail chuyên nghiệp\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 30,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 51,\n        \"ProductName\": \"Nail Art Glitter\",\n        \"Description\": \"Bột nhũ trang trí móng\",\n        \"Price\": \"25.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 70,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 38,\n        \"ProductName\": \"Nail File Buffer\",\n        \"Description\": \"Dũa móng & buffer\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 26,\n        \"ProductName\": \"Gel Polish Pink\",\n        \"Description\": \"Sơn gel màu hồng\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 28,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 35,\n        \"ProductName\": \"Top Coat\",\n        \"Description\": \"Lớp phủ bảo vệ gel\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 58,\n        \"ProductName\": \"Nail Art Stencils\",\n        \"Description\": \"Khuôn vẽ nail\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 23,\n        \"ProductName\": \"Nail Tips Set\",\n        \"Description\": \"Bộ móng giả nhiều size\",\n        \"Price\": \"90.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 35,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 49,\n        \"ProductName\": \"Manicure Cream\",\n        \"Description\": \"Kem chăm sóc móng\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 25,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 34,\n        \"ProductName\": \"Nail Base Coat\",\n        \"Description\": \"Lớp sơn nền gel\",\n        \"Price\": \"35.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 24,\n        \"ProductName\": \"Cuticle Oil\",\n        \"Description\": \"Dầu dưỡng móng và da quanh móng\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 80,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 40,\n        \"ProductName\": \"Nail Art Brushes\",\n        \"Description\": \"Bộ cọ vẽ nail\",\n        \"Price\": \"80.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 22,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 43,\n        \"ProductName\": \"Gel Remover\",\n        \"Description\": \"Gel tẩy móng\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 59,\n        \"ProductName\": \"Nail Art Stamp Kit\",\n        \"Description\": \"Bộ stamping nail nghệ thuật\",\n        \"Price\": \"55.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 33,\n        \"ProductName\": \"Nail Primer\",\n        \"Description\": \"Dung dịch lót móng trước gel\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 55,\n        \"ProductName\": \"Nail Art Pens\",\n        \"Description\": \"Bút vẽ nail nhiều màu\",\n        \"Price\": \"40.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 50,\n        \"ProductName\": \"Pedicure Cream\",\n        \"Description\": \"Kem chăm sóc chân\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 19,\n        \"ProductName\": \"Nail File Set\",\n        \"Description\": \"Bộ dũa móng chuyên nghiệp\",\n        \"Price\": \"50.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 20,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 60,\n        \"ProductName\": \"Nail Art 3D Kit\",\n        \"Description\": \"Bộ trang trí móng 3D\",\n        \"Price\": \"75.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 21,\n        \"ProductName\": \"UV Lamp\",\n        \"Description\": \"Đèn UV sấy gel nail\",\n        \"Price\": \"300.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 20,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 37,\n        \"ProductName\": \"Nail Stamping Kit\",\n        \"Description\": \"Bộ stamping nail\",\n        \"Price\": \"60.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 45,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 56,\n        \"ProductName\": \"Nail Art Brushes Pro\",\n        \"Description\": \"Bộ cọ chuyên nghiệp\",\n        \"Price\": \"90.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 32,\n        \"ProductName\": \"Nail Remover Gel\",\n        \"Description\": \"Gel tẩy sơn móng gel\",\n        \"Price\": \"55.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 60,\n        \"SoldQuantity\": 18,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 45,\n        \"ProductName\": \"Acrylic Liquid\",\n        \"Description\": \"Dầu acrylic nail\",\n        \"Price\": \"45.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 16,\n        \"ProductName\": \"Nail Polish Set\",\n        \"Description\": \"Bộ sơn móng đa màu\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 29,\n        \"ProductName\": \"Manicure Set\",\n        \"Description\": \"Bộ dụng cụ chăm sóc móng\",\n        \"Price\": \"110.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 57,\n        \"ProductName\": \"Nail Art Design Kit\",\n        \"Description\": \"Bộ thiết kế nail\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 40,\n        \"SoldQuantity\": 15,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 44,\n        \"ProductName\": \"Nail Sculpting Gel\",\n        \"Description\": \"Gel tạo hình móng\",\n        \"Price\": \"200.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 35,\n        \"SoldQuantity\": 12,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 20,\n        \"ProductName\": \"Nail Brush Set\",\n        \"Description\": \"Bộ cọ vẽ nail đa dạng\",\n        \"Price\": \"80.00\",\n        \"CategoryID\": 3,\n        \"StockQuantity\": 55,\n        \"SoldQuantity\": 12,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 41,\n        \"ProductName\": \"UV Gel Lamp\",\n        \"Description\": \"Đèn UV cho gel\",\n        \"Price\": \"300.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 20,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 15,\n        \"ProductName\": \"Flower Nail Kit\",\n        \"Description\": \"Bộ dụng cụ nail cơ bản\",\n        \"Price\": \"150.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 50,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 30,\n        \"ProductName\": \"Pedicure Set\",\n        \"Description\": \"Bộ dụng cụ chăm sóc chân\",\n        \"Price\": \"120.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 30,\n        \"SoldQuantity\": 10,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 42,\n        \"ProductName\": \"LED Lamp\",\n        \"Description\": \"Đèn LED nail\",\n        \"Price\": \"350.00\",\n        \"CategoryID\": 4,\n        \"StockQuantity\": 18,\n        \"SoldQuantity\": 8,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 18,\n        \"ProductName\": \"Acrylic Nail Kit\",\n        \"Description\": \"Bộ acrylic nail đầy đủ\",\n        \"Price\": \"250.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 25,\n        \"SoldQuantity\": 8,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 17,\n        \"ProductName\": \"Gel Nail Starter\",\n        \"Description\": \"Bộ gel nail cho người mới\",\n        \"Price\": \"200.00\",\n        \"CategoryID\": 2,\n        \"StockQuantity\": 30,\n        \"SoldQuantity\": 5,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    },\n    {\n        \"ProductID\": 31,\n        \"ProductName\": \"Nail Drill Machine\",\n        \"Description\": \"Máy khoan móng chuyên nghiệp\",\n        \"Price\": \"500.00\",\n        \"CategoryID\": 1,\n        \"StockQuantity\": 15,\n        \"SoldQuantity\": 5,\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\",\n        \"CreatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"UpdatedAt\": \"2025-09-27T13:14:50.000Z\",\n        \"Status_Product\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ProductName\": \"nail nail \",\n  \"Price\": 250000,\n  \"Description\": \"chất lượng cao\",\n  \"CategoryID\": 2,\n  \"StockQuantity\": 100,\n  \"SoldQuantity\": 3,\n  \"ImagePath\": \"/uploads/shirt-white.jpg\",\n  \"status_Product\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ProductName\": \"nail nail \",\n  \"Price\": 250000,\n  \"Description\": \"chất lượng cao\",\n  \"CategoryID\": 2,\n  \"StockQuantity\": 100,\n  \"SoldQuantity\": 3,\n  \"ImagePath\": \"/uploads/shirt-white.jpg\",\n  \"status_Product\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-yUg3gCWnWSyAYzU0ocRvggTsWoc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:37:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Thêm sản phẩm thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Price\": 22500000,\n  \"StockQuantity\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/update/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Price\": 22500000,\n  \"StockQuantity\": 50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/update/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"update",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-4qqofjzuR3JC0BvRacFRvgdc0lY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 08:50:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cập nhật sản phẩm thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/delete/62",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"delete",
+								"62"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/delete/62",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"delete",
+										"62"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-esewNlcSRT1Wsns6SA/qOMyO5+Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 09:08:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa sản phẩm thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get_option_variant",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/products/variant-options/70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"variant-options",
+								"70"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-options/70",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-options",
+										"70"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-uXXB0XVxPkXr5Yd/fACkR4WgXJc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 16:28:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"OptionID\": 1,\n        \"ProductID\": 70,\n        \"OptionName\": \"Màu sắc\"\n    },\n    {\n        \"OptionID\": 2,\n        \"ProductID\": 70,\n        \"OptionName\": \"Phân Loại\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "add_option",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": 70,\n  \"optionName\": \"kích thước\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/variant-options",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"variant-options"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": 70,\n  \"optionName\": \"kích thước\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-options",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-options"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-lDC/+nld3+lNBejIalMsZgsjtu0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 16:31:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Thêm tùy chọn biến thể thành công\",\n    \"insertId\": 5\n}"
+						}
+					]
+				},
+				{
+					"name": "delete_option",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/products/variant-options/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"variant-options",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-options/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-options",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-uMbw2gg8t+NnTBI//Fc5JMVFz2w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 16:32:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa tùy chọn biến thể thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update_option",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"optionId\": 4,\n  \"newName\": \"kích thước \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/variant-options",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"variant-options"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"optionId\": 4,\n  \"newName\": \"kích thước \"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/variant-options",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"variant-options"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-fUdr66qHjCEBEuuqQG8UORh0jXc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 16:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cập nhật tên tùy chọn biến thể thành công\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "get_customer_byUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/user/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/customers/user/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7e-R2H1VOHwFO4HnbZ6qL9/0Wj0TIY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 09:42:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CustomerID\": 1,\n    \"FullName\": \"Nguyen Van A\",\n    \"LoyaltyPoints\": 0,\n    \"MembershipLevel\": \"Bronze\",\n    \"CreatedAt\": \"2025-09-11T11:06:46.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get_customerID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/id/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/customers/id/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"id",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-tBECmtN1xmkDN5/948wLH17e5GA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 09:42:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CustomerID\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "add_customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Nguyen thi thu hang 3\",\n  \"userId\": 9\n \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fullName\": \"Nguyen thi thu hang 3\",\n  \"userId\": 9\n \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/customers/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-SKvaAWy+3DzvFhKWmYacr5eZMsU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 10:01:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Customer created\",\n    \"CustomerID\": 10\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Nguyen Van \",\n  \"loyaltyPoints\": 150,\n  \"membershipLevel\": \"Gold\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fullName\": \"Nguyen Van \",\n  \"loyaltyPoints\": 150,\n  \"membershipLevel\": \"Gold\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/customers/update",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-cdXCA10i0/IeYgjxohI+X96SVcU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 10:16:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cập nhật thành công\",\n    \"affectedRows\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/customers/delete",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-ntXMO7g6AokkVX37AwHwf5Ad3QM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 10:19:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa customer thành công\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "create_cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CustomerID\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/carts/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"carts",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"CustomerID\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/carts/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"carts",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-Y2rCtG3w22HE24K32DgY6byiTLw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 11:44:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cart created\",\n    \"CartID\": 8\n}"
+						}
+					]
+				},
+				{
+					"name": "delete_cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"UserName\": \"Nguyen Van A\",\n  \"Password\": \"pass123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/carts/delete/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"carts",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"UserName\": \"Nguyen Van A\",\n  \"Password\": \"pass123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/carts/delete/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"carts",
+										"delete",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-5qXWmNt4M4MfDggLh+eWrYuNKjc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 11:50:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa giỏ hàng thành công\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cart_item",
+			"item": [
+				{
+					"name": "add_cartItem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CartID\": 3,\n  \"ProductID\": 9,\n  \"Quantity\": 2,\n  \"Price\": 150000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart_items/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart_items",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"CartID\": 3,\n  \"ProductID\": 9,\n  \"Quantity\": 2,\n  \"Price\": 150000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart_items/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart_items",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-R1hGrTg8SQy8SjadeB+unLhe4DM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 12:28:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"CartItem created\",\n    \"CartItemID\": {\n        \"affectedRows\": 1,\n        \"CartItemID\": 19\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update_cartItem",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Quantity\": 3,\n  \"is_selected\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart_items/update/27",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart_items",
+								"update",
+								"27"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Quantity\": 3,\n  \"is_selected\": 0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart_items/update/27",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart_items",
+										"update",
+										"27"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-F3iX25dcv+konP6V8ysniRTrLIE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 12:11:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cập nhật cart item thành công\",\n    \"affectedRows\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "delate_cart_item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cart_items/delete/27",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart_items",
+								"delete",
+								"27"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cart_items/delete/27",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart_items",
+										"delete",
+										"27"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-erlOG5Rs6o444P1WDBr392HlxuY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 12:12:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa cart item thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get_cartItem_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cart_items/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart_items",
+								"19"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cart_items/19",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart_items",
+										"19"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "282"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11a-lwVxHnbD5F6cwi+qOCqpWj6sOW4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 12:47:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CartItemID\": 19,\n    \"CartID\": 3,\n    \"ProductID\": 9,\n    \"Quantity\": 5,\n    \"Price\": 180000,\n    \"Total\": \"900000.00\",\n    \"is_selected\": 0,\n    \"Is_Selected\": false,\n    \"CreatedAt\": \"2025-09-11T11:17:43.000Z\",\n    \"UpdatedAt\": \"2025-10-29T12:28:42.000Z\",\n    \"ProductName\": \"Sơn móng tay màhồng\",\n    \"ImagePath\": \"images/pink_polish.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getAll_by_userID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cart_items/user/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart_items",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cart_items/user/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart_items",
+										"user",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2366"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93e-XHYZT2VySlu1QFefxZO2KF+e/7o\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 12:49:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"CartItemID\": 19,\n        \"CartID\": 3,\n        \"ProductID\": 9,\n        \"Quantity\": 5,\n        \"Price\": 180000,\n        \"Total\": \"900000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-09-11T11:17:43.000Z\",\n        \"UpdatedAt\": \"2025-10-29T12:28:42.000Z\",\n        \"ProductName\": \"Sơn móng tay màhồng\",\n        \"ImagePath\": \"images/pink_polish.jpg\"\n    },\n    {\n        \"CartItemID\": 21,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T11:58:13.000Z\",\n        \"UpdatedAt\": \"2025-10-29T11:58:13.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"CartItemID\": 22,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T11:58:32.000Z\",\n        \"UpdatedAt\": \"2025-10-29T11:58:32.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"CartItemID\": 23,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T11:58:36.000Z\",\n        \"UpdatedAt\": \"2025-10-29T11:58:36.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"CartItemID\": 24,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T12:07:18.000Z\",\n        \"UpdatedAt\": \"2025-10-29T12:07:18.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"CartItemID\": 25,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T12:07:33.000Z\",\n        \"UpdatedAt\": \"2025-10-29T12:07:33.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"CartItemID\": 26,\n        \"CartID\": 3,\n        \"ProductID\": 10,\n        \"Quantity\": 2,\n        \"Price\": 150000,\n        \"Total\": \"300000.00\",\n        \"is_selected\": 0,\n        \"Is_Selected\": false,\n        \"CreatedAt\": \"2025-10-29T12:08:25.000Z\",\n        \"UpdatedAt\": \"2025-10-29T12:08:25.000Z\",\n        \"ProductName\": \"Sơn móng tay Mịn Bóng\",\n        \"ImagePath\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "suggestion",
+			"item": [
+				{
+					"name": "get_by_name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/suggestions/name?name=nail",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggestions",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "nail"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/suggestions/name?name=nail",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"suggestions",
+										"name"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "nail"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "869"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"365-ET7uleZK4JIrJtmZMipAQ0gz+Ao\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 10:24:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"keyWord\": \"nail polish\",\n        \"totalSearches\": 120,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"gel nail\",\n        \"totalSearches\": 95,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"nail polish remover\",\n        \"totalSearches\": 90,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"nail art ideas\",\n        \"totalSearches\": 80,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"acrylic nails\",\n        \"totalSearches\": 70,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"nail polish colors\",\n        \"totalSearches\": 70,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"ombre nails\",\n        \"totalSearches\": 70,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"glitter nails\",\n        \"totalSearches\": 65,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"gel polish nails\",\n        \"totalSearches\": 65,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    },\n    {\n        \"keyWord\": \"nail extension\",\n        \"totalSearches\": 65,\n        \"updatedAt\": \"2025-09-29T05:24:31.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "add_suggestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\",\n  \"keyWord\": \"nail xinh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/suggestions/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggestions",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\",\n  \"keyWord\": \"nail xinh\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/suggestions/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"suggestions",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-Hhjpt6bfWndcqy+9qbQRziuyBzY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 10:31:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Thêm từ khóa gợi ý thành công\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product_image",
+			"item": [
+				{
+					"name": "add_image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": 70,\n  \"imageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/images",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"images"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": 70,\n  \"imageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/images",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"images"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-n+MfySKbU2jPC3yciAhvULULVeI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 14:21:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Thêm hình ảnh sản phẩm thành công\",\n    \"insertId\": 69\n}"
+						}
+					]
+				},
+				{
+					"name": "delete_image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/images/64",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"images",
+								"64"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/images/64",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"images",
+										"64"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-rfJouo3D5OvfxM5n53Gqq/JfOYc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 14:06:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Xóa hình ảnh sản phẩm thành công\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get_image",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/products/images/70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"images",
+								"70"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/products/images/70",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"images",
+										"70"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "509"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fd-72lVu3BxPj0ZVU/Mo0JHujq7WsQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 31 Oct 2025 14:01:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"ImageID\": 16,\n        \"ProductID\": 70,\n        \"ImageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"ImageID\": 17,\n        \"ProductID\": 70,\n        \"ImageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"ImageID\": 18,\n        \"ProductID\": 70,\n        \"ImageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    },\n    {\n        \"ImageID\": 61,\n        \"ProductID\": 70,\n        \"ImageURL\": \"https://mnxhotcwxdmhsazwtdac.supabase.co/storage/v1/object/public/products/anh2.jpg\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "otp",
+			"value": ""
+		},
+		{
+			"key": "registrationToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "refresToken",
+			"value": ""
+		}
+	]
+}
